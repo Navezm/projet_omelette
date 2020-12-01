@@ -73,7 +73,7 @@ let fromage = new Ingredients("fromage", "entier", 3);
 let epicerie = {
     nom: "epicerie",
     personnes: [],
-    paniers: [panier1 = {nom: "panier", contenu: []}, panier2 = {nom: "panier", contenu: []}, panier3 = {nom: "panier", contenu: []}, panier4 = {nom: "panier", contenu: []}],
+    paniers: [panier1 = {nom: "panier1", contenu: []}, panier2 = {nom: "panier2", contenu: []}, panier3 = {nom: "panier3", contenu: []}, panier4 = {nom: "panier4", contenu: []}],
     ingredients: [oignon, oeuf, epice, fromage],
 };
 
@@ -125,10 +125,12 @@ console.log(`${personne.nom} est actuellement à la ${personne.lieu}`);
 
 personne.seDeplacer("Épicerie");
 
+console.log(epicerie);
+
 // Mon personnage prend un des paniers dans l'épicerie (il récupère le panier dans les objets de l'épicerie et le met dans sa main droite.)
 
 personne.mainDroite.push(epicerie.paniers[0]);
-epicerie.paniers.pop();
+epicerie.paniers.shift();
 
 // Il doit y avoir un objet dans la main droite de personnage et un panier en moins. Vérifier avec des console.log() ensuite afficher un message du type : 
 // console.log(`${personnage.nom} a pris un ${personnage.mainDroite.type}`);
@@ -147,6 +149,7 @@ for (let i = 0; i < epicerie.ingredients.length; i++) {
 };
 
 console.log(personne);
+
 // Payer chaque ingrédient récupéré dans le panier. Avec une boucle aussi, on va les passer 1 à 1 dans la fonction payerArticle()
 
 for (let i = 0; i < personne.mainDroite[0].contenu.length; i++) {
@@ -163,11 +166,11 @@ personne.seDeplacer("Maison");
 
 // mettre chaque ingrédient dans le bol (1 à 1 donc avec une boucle)
 
-for (let i = 0; i < personne.mainDroite[0].contenu.length; i++) {
-    bol.contenu.push(personne.mainDroite[0].contenu[i]);
-    console.log(`Dans mon bol je met : ${personne.mainDroite[0].contenu[i].nom}`);
-    delete personne.mainDroite[0].contenu[i];
-
+let produitsLength = personne.mainDroite[0].contenu.length;
+for (let i = 0; i < produitsLength; i++) {
+    bol.contenu.push(personne.mainDroite[0].contenu[0]);
+    console.log(`Dans mon bol je met : ${personne.mainDroite[0].contenu[0].nom}`);
+    personne.mainDroite[0].contenu.shift();
 };
 
 // Vérifier que les ingrédients ne se trouvent plus dans le panier (oups ! on a oublié de le rapporter x)
