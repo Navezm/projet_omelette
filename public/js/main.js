@@ -19,9 +19,11 @@ let personne = {
         if (lieu == "maison"){
             maison.personnes.push(personne);
             epicerie.personnes.pop();
+            console.log(`Je rentre à ma maison`);
         } else if (lieu == "epicerie"){
             epicerie.personnes.push(personne);
             maison.personnes.pop();
+            console.log(`Je vais à l'épicerie`);
         };
         this.lieu = lieu;
     },
@@ -144,7 +146,7 @@ epicerie.paniers.shift();
 
 console.log(epicerie);
 console.log(personne);
-console.log(`${personne.nom} a pris un ${personne.mainDroite[0].nom}`);
+console.log(`${personne.nom} a pris le ${personne.mainDroite[0].nom}`);
 
 
 // Je créer une boucle qui va prendre chaque élément (ingrédient) du contenu de l'épicerie (1 à 1) et en faire une COPIE dans le panier du personnage
@@ -155,8 +157,6 @@ for (let i = 0; i < epicerie.ingredients.length; i++) {
     console.log(`Dans mon panier je met : ${epicerie.ingredients[i].nom}`);
 };
 
-console.log(personne);
-
 // Payer chaque ingrédient récupéré dans le panier. Avec une boucle aussi, on va les passer 1 à 1 dans la fonction payerArticle()
 
 for (let i = 0; i < personne.mainDroite[0].contenu.length; i++) {
@@ -165,7 +165,7 @@ for (let i = 0; i < personne.mainDroite[0].contenu.length; i++) {
 
 // Afficher un message de ce qu'il reste d'argent sur le personnage.
 
-console.log(personne.argent);
+console.log(`Il me reste en poche ${personne.argent}€`);
 
 // rentrer à la maison (comme ça on pourra cuisiner)
 
@@ -191,9 +191,6 @@ console.log(personne.mainDroite[0].contenu);
 personne.seDeplacer("epicerie");
 epicerie.paniers.push(personne.mainDroite[0]);
 personne.mainDroite.splice(0,1);
-
-console.log(epicerie);
-console.log(personne);
 
 // Afficher un petit message
 
@@ -221,14 +218,13 @@ bol.melanger("omelette");
 
 // Afficher un message avec le nouveau mélange
 
-console.log(`Dans mon bol j'ai : ${bol.contenu[0].nom}`);
+console.log(`Dans mon bol j'ai : une ${bol.contenu[0].nom}`);
 
 // vider le contenu du bol dans la poele. Il ne doit plus rien avoir dans le bol et y avoir juste l'omelette pas cuite.
 
 poele.contenu.push(bol.contenu[0]);
-
-poele.cuir();
+console.log(poele);
 
 // Afficher un message final, notre omelette est cuite :)
-console.log(maison);
-console.log(poele);
+
+poele.cuir();
