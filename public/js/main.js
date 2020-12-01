@@ -16,6 +16,13 @@ let personne = {
     mainDroite: [],
     mainGauche: [],
     seDeplacer(lieu){
+        if (lieu == "maison"){
+            maison.personnes.push(personne);
+            epicerie.personnes.pop();
+        } else if (lieu == "epicerie"){
+            epicerie.personnes.push(personne);
+            maison.personnes.pop();
+        };
         this.lieu = lieu;
     },
     payerArticle(article){
@@ -114,7 +121,7 @@ let bol = {
 // Pour dire que le personnage est à la maison :
 // Avec l'objet personnage, utiliser la method seDeplacer et de passer en paramètre l'objet maison
 
-personne.seDeplacer("Maison");
+personne.seDeplacer("maison");
 
 // Afficher un message tel que :
 // console.log(personnage.nom + " est actuellement à la " + personnage.lieu);
@@ -123,7 +130,7 @@ console.log(`${personne.nom} est actuellement à la ${personne.lieu}`);
 
 // Pour aller à l'épicerie acheter les ingrédients pour l'omelette, je répète la première étape en changeant le parametre de la method seDeplacer par l'epicerie
 
-personne.seDeplacer("Épicerie");
+personne.seDeplacer("epicerie");
 
 console.log(epicerie);
 
@@ -153,7 +160,7 @@ console.log(personne);
 // Payer chaque ingrédient récupéré dans le panier. Avec une boucle aussi, on va les passer 1 à 1 dans la fonction payerArticle()
 
 for (let i = 0; i < personne.mainDroite[0].contenu.length; i++) {
-    personne.payerArticle(epicerie.ingredients[i]);
+    personne.payerArticle(personne.mainDroite[0].contenu[i]);
 };
 
 // Afficher un message de ce qu'il reste d'argent sur le personnage.
@@ -162,7 +169,7 @@ console.log(personne.argent);
 
 // rentrer à la maison (comme ça on pourra cuisiner)
 
-personne.seDeplacer("Maison");
+personne.seDeplacer("maison");
 
 // mettre chaque ingrédient dans le bol (1 à 1 donc avec une boucle)
 
@@ -181,7 +188,7 @@ console.log(personne.mainDroite[0].contenu);
 
 // Retourner à l'épicerie pour rapporter le panier. (donc seDeplacer puis enlever le panier de la main droite et le remetre dans les paniers de l'épicerie.)
 
-personne.seDeplacer("Épicerie");
+personne.seDeplacer("epicerie");
 epicerie.paniers.push(personne.mainDroite[0]);
 personne.mainDroite.splice(0,1);
 
@@ -194,7 +201,7 @@ console.log(`J'ai ramené mon panier à l'épicerie`);
 
 // Retourner à la maison pour continuer l'omelette
 
-personne.seDeplacer("Maison");
+personne.seDeplacer("maison");
 
 // Afficher un petit message
 
@@ -223,5 +230,5 @@ poele.contenu.push(bol.contenu[0]);
 poele.cuir();
 
 // Afficher un message final, notre omelette est cuite :)
-
+console.log(maison);
 console.log(poele);
