@@ -134,8 +134,6 @@ console.log(`${personne.nom} est actuellement à la ${personne.lieu}`);
 
 personne.seDeplacer("epicerie");
 
-console.log(epicerie);
-
 // Mon personnage prend un des paniers dans l'épicerie (il récupère le panier dans les objets de l'épicerie et le met dans sa main droite.)
 
 personne.mainDroite.push(epicerie.paniers[0]);
