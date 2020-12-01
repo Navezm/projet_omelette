@@ -151,7 +151,7 @@ console.log(personne);
 
 for (let i = 0; i < personne.mainDroite[0].contenu.length; i++) {
     personne.payerArticle(epicerie.ingredients[i]);
-}
+};
 
 // Afficher un message de ce qu'il reste d'argent sur le personnage.
 
@@ -167,6 +167,7 @@ for (let i = 0; i < personne.mainDroite[0].contenu.length; i++) {
     bol.contenu.push(personne.mainDroite[0].contenu[i]);
     console.log(`Dans mon bol je met : ${personne.mainDroite[0].contenu[i].nom}`);
     delete personne.mainDroite[0].contenu[i];
+
 };
 
 // Vérifier que les ingrédients ne se trouvent plus dans le panier (oups ! on a oublié de le rapporter x)
@@ -201,12 +202,12 @@ console.log(`Je suis rentré à la maison je peux continuer mon omelette`);
 for (let i = 0; i < bol.contenu.length; i++) {
     if (bol.contenu[i].etat == "entier"){
         personne.couper(bol.contenu[i], couteau);
-    }
-}
+    };
+};
 
 // Mélanger le contenu du bol avec la méthode melanger. on va nommer ce mélange une 'omelette' (à passer en param).
 
-bol.melanger("omelette")
+bol.melanger("omelette");
 
 // Afficher un message avec le nouveau mélange
 
@@ -215,7 +216,6 @@ console.log(`Dans mon bol j'ai : ${bol.contenu[0].nom}`);
 // vider le contenu du bol dans la poele. Il ne doit plus rien avoir dans le bol et y avoir juste l'omelette pas cuite.
 
 poele.contenu.push(bol.contenu[0]);
-console.log(poele);
 
 poele.cuir();
 
